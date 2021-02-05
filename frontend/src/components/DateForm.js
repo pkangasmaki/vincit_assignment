@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
-import Col from 'react-bootstrap/Col'
+//import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import stockService from '../services/stock'
 
-const DateForm = ({ setNotificationMsg }) => {
+const DateForm = ({ setDateRange, setStocks, setNotificationMsg }) => {
 
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
@@ -40,9 +40,9 @@ const DateForm = ({ setNotificationMsg }) => {
 
     console.log('start:', transformDate(startDate))
     console.log('end:', transformDate(endDate))
-
+    setDateRange(' from ' + transformDate(startDate)+ ' to ' + transformDate(endDate))
     const data = await stockService.getRange(transformDate(startDate), transformDate(endDate))
-
+    setStocks(data)
     console.log(data)
 
     //Clear the input-values
@@ -52,17 +52,13 @@ const DateForm = ({ setNotificationMsg }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Row>
-        <Col>
+
           Start date
-          <Form.Control type="date" value={startDate} onChange={handleStartDate} />
-        </Col>
-        <Col>
+      <Form.Control type="date" value={startDate} onChange={handleStartDate} />
+
           End date
-          <Form.Control type="date" value={endDate} onChange={handleEndDate} />
-        </Col>
-      </Form.Row>
-      <Button variant="primary" type="submit">
+      <Form.Control type="date" value={endDate} onChange={handleEndDate} />
+      <Button style={{ marginTop: 10 }} variant="primary" type="submit">
         Submit
       </Button>
     </Form>
