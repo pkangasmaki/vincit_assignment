@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import stockService from '../services/stock'
 
 const DateForm = ({ setNotificationMsg }) => {
 
@@ -11,7 +12,19 @@ const DateForm = ({ setNotificationMsg }) => {
   const handleStartDate = (e) => setStartDate(e.target.value)
   const handleEndDate = (e) => setEndDate(e.target.value)
 
-  const handleSubmit = (e) => {
+  //Transform date from dd-mm-yy to mm/dd/yyyy
+  const transformDate = (date) => {
+    const splitDate = date.split('-')
+
+    const dd = splitDate[2]
+    const mm = splitDate[1]
+    const yyyy = splitDate[0]
+
+    const modifiedDate = mm+'/'+dd+'/'+yyyy
+    return modifiedDate
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     //Pass notification if values are missing from input fields
@@ -25,8 +38,12 @@ const DateForm = ({ setNotificationMsg }) => {
       return setTimeout(() => setNotificationMsg(''), 3000)
     }
 
-    console.log('start:', startDate)
-    console.log('end:', endDate)
+    console.log('start:', transformDate(startDate))
+    console.log('end:', transformDate(endDate))
+
+    const data = await stockService.getRange(transformDate(startDate), transformDate(endDate))
+
+    console.log(data)
 
     //Clear the input-values
     setStartDate('')
