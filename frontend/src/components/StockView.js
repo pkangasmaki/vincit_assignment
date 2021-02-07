@@ -23,7 +23,7 @@ const StockView = ({ showList, stocks, dateRange }) => {
     )
   }
 
-  //Sort array by elements value volume in descending order
+  //Sort array by elements value volume in descending order. If volumes are equal, element with more significant price change goes first.
   const sortByVolume = (array) => {
     return array.sort((a, b) => (a.Volume < b.Volume) ? 1 : (a.Volume === b.volume) ? ((a.PriceChange < b.PriceChange) ? 1 : -1) : -1 )
   }
