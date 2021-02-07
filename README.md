@@ -11,18 +11,18 @@ Instructions for the program:
 
 _npm install_
 
-_npm start_     <- Run program
+_npm start_     **<-** Run program
 
-_npm run dev_   <- Run in development mode (nodemon)
+_npm run dev_   **<-** Run in development mode (nodemon)
 
-_npm run lint_  <- Eslint
+_npm run lint_  **<-** Eslint
 
 
 important urls:
 
 _/api/stocks_
 
-_/api/stocks/range?start=01/13/2021&end=01/19/2021_   <- where 01/13/2020 and 01/19/2021 are editable params
+_/api/stocks/range?start=01/13/2021&end=01/19/2021_   **<-** Where 01/13/2020 and 01/19/2021 are editable params
 
 
 
