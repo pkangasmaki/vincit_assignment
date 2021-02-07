@@ -1,16 +1,18 @@
 import React from 'react'
+import Alert from 'react-bootstrap/Alert'
 
 const Notification = ({ notificationMsg }) => {
-
   //Do not display notification if the message is not defined
   if (!notificationMsg) {
     return null
   }
 
   return (
-    <div>
-      {notificationMsg}
-    </div>
+    <>
+      <Alert variant='danger'>
+        {notificationMsg}
+      </Alert>
+    </>
   )
 }
 
