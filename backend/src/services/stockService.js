@@ -43,7 +43,7 @@ const sma5calc = (index) => {
   let sma5Value = 0;
   let i;
   for(i = 1; i<6; i++) {
-    sma5Value += toNum(stockData[index+i].Close);
+    sma5Value += stockData[index+i].Close;
   }
   stockData[index].SMA5 = sma5Value/5;
 };
@@ -55,11 +55,11 @@ fs.createReadStream(__dirname + dataPath)
     //Adding own fields: YesterdayClose, SMA5, PriceChange to the objects.
     let obj = {
       Date: row.Date,
-      Close: row[" Close/Last"],
-      Volume: row[" Volume"],
-      Open: row[" Open"],
-      High: row[" High"],
-      Low: row[" Low"],
+      Close: toNum(row[" Close/Last"]),
+      Volume: Number(row[" Volume"].substring(1)),
+      Open: toNum(row[" Open"]),
+      High: toNum(row[" High"]),
+      Low: toNum(row[" Low"]),
       PriceChange: priceChange(row[" High"], row[" Low"]),
     };
     stockData.push(obj);

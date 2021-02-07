@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import './App.css'
 
 import DateForm from './components/DateForm'
 import Notification from './components/Notification'
@@ -9,16 +8,17 @@ const App = () => {
 
   const [notificationMsg, setNotificationMsg] = useState('')
   const [stocks, setStocks] = useState([])
-  const [dateRange, setDateRange] = useState('')
+  const [dateRange, setDateRange] = useState({})
+  const [showList, setShowList] = useState('')
 
   return (
-    <div>
+    <div style={{ marginLeft:'25%', marginRight:'25%' }}>
+      <Notification notificationMsg={notificationMsg}/>
       <div>
-        <Notification notificationMsg={notificationMsg}/>
         <h3>Insert date range</h3>
-        <DateForm setDateRange={setDateRange} setStocks={setStocks} setNotificationMsg={setNotificationMsg} />
+        <DateForm setShowList={setShowList} setDateRange={setDateRange} setStocks={setStocks} setNotificationMsg={setNotificationMsg} />
       </div>
-      <StockView dateRange={dateRange} stocks={stocks} />
+      <StockView showList={showList} dateRange={dateRange} stocks={stocks} />
     </div>
   )
 }
