@@ -4,49 +4,7 @@ const fs = require('fs');
 const stockHelper = require('../utils/stock_helper');
 
 const dataPath = '../../../data/HistoricalQuotes.csv';
-const stockData = [];
-
-//Function to remove first 2 letters (Database has space + $ at the start of each price value) and turn it to number for calculations
-const toNum = (value) => {
-  return Number(value.substring(2));
-};
-
-//Returns the difference between params high and low, always positive
-const priceChange = (high, low) => {
-  if(toNum(high) > toNum(low)) return toNum(high)-toNum(low);
-  else return toNum(low)-toNum(high);
-};
-
-//Add previous close price to the stockData array values
-const addPreviousClose = () => {
-  let i = 0;
-  for(i = 0; i < stockData.length; i++) {
-    //Except for the latest day since it does not have previous day
-    if(i !== stockData.length-1) {
-      stockData[i].PreviousClose = stockData[i+1].Close;
-    }
-  }
-};
-
-//Add SMA5 to stockData array values
-const addSMA5 = () => {
-  let j = 0;
-  for(j = 0; j < stockData.length; j++) {
-    if(j < stockData.length-5) {
-      sma5calc(j);
-    }
-  }
-};
-
-//Calculate SMA5
-const sma5calc = (index) => {
-  let sma5Value = 0;
-  let i;
-  for(i = 1; i<6; i++) {
-    sma5Value += stockData[index+i].Close;
-  }
-  stockData[index].SMA5 = sma5Value/5;
-};
+let stockData = [];
 
 //Read data from csv file and push it to the stockData array
 fs.createReadStream(__dirname + dataPath)
@@ -55,18 +13,18 @@ fs.createReadStream(__dirname + dataPath)
     //Adding own fields: YesterdayClose, SMA5, PriceChange to the objects.
     let obj = {
       Date: row.Date,
-      Close: toNum(row[" Close/Last"]),
+      Close: stockHelper.toNum(row[" Close/Last"]),
       Volume: Number(row[" Volume"].substring(1)),
-      Open: toNum(row[" Open"]),
-      High: toNum(row[" High"]),
-      Low: toNum(row[" Low"]),
-      PriceChange: priceChange(row[" High"], row[" Low"]),
+      Open: stockHelper.toNum(row[" Open"]),
+      High: stockHelper.toNum(row[" High"]),
+      Low: stockHelper.toNum(row[" Low"]),
+      PriceChange: stockHelper.priceChange(row[" High"], row[" Low"]),
     };
     stockData.push(obj);
   })
   .on('end', () => {
-    addPreviousClose();
-    addSMA5();
+    stockData = stockHelper.addPreviousClose(stockData);
+    stockData = stockHelper.addSMA5(stockData);
     console.log('CSV file successfully processed');
   });
 
