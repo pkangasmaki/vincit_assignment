@@ -11,6 +11,7 @@ const DateForm = ({ setShowList, setDateRange, setStocks, setNotificationMsg }) 
   const handleStartDate = (e) => setStartDate(e.target.value)
   const handleEndDate = (e) => setEndDate(e.target.value)
 
+  //Transform months (for example: Jan) into numeral form
   const monthToNum = (month) => {
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
@@ -50,6 +51,8 @@ const DateForm = ({ setShowList, setDateRange, setStocks, setNotificationMsg }) 
 
     setDateRange({ start: transformDate(startDate), end: transformDate(endDate) })
     console.log(transformDate(startDate), ' to ', transformDate(endDate))
+
+    //Fetch data from backend in the given range
     const data = await stockService.getRange(transformDate(startDate), transformDate(endDate))
     setStocks(data)
     setShowList(e.target.value)
