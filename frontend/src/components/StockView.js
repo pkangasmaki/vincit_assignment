@@ -94,7 +94,7 @@ const StockView = ({ showList, stocks, dateRange }) => {
         <thead>
           <tr>
             <td>Date</td>
-            <td>Price change %</td>
+            <td>Price change % (vs. SMA5)</td>
           </tr>
         </thead>
         <tbody>
