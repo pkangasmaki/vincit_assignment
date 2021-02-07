@@ -11,7 +11,7 @@ Instructions for the program:
 
 _npm install_
 
-_npm start_      **<-** Run program
+_npm start_      **<-** Run program
 
 _npm run dev_    **<-** Run in development mode (nodemon)
 
