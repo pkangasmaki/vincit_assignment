@@ -11,18 +11,18 @@ Instructions for the program:
 
 _npm install_
 
-_npm start_     **<-** Run program
+_npm start_      **<-** Run program
 
-_npm run dev_   **<-** Run in development mode (nodemon)
+_npm run dev_    **<-** Run in development mode (nodemon)
 
-_npm run lint_  **<-** Eslint
+_npm run lint_    **<-** Eslint
 
 
 important urls:
 
 _/api/stocks_
 
-_/api/stocks/range?start=01/13/2021&end=01/19/2021_   **<-** Where 01/13/2020 and 01/19/2021 are editable params
+_/api/stocks/range?start=01/13/2021&end=01/19/2021_    **<-** Where 01/13/2020 and 01/19/2021 are editable params
 
 
 
@@ -36,7 +36,7 @@ _npm start_
 _npm run lint_
 
 
-Start by giving start date and end date in the input fields on the frontpage. There are two buttons; Volume and SMA5. Volume button displays statistics about the stocks volume and daily price changes. Whereas SMA5 button displays statistics about stocks opening price compared to the SMA5 price. You can switch between the two views by pushing either of the buttons. 
+Start by giving preferred start date and end date in the input fields on the frontpage. There are two buttons; Volume and SMA5. Volume button displays statistics about the stocks volume and daily price changes whereas SMA5 button displays statistics about stocks opening price compared to the SMA5 price. You can switch between the two views by clicking either of the buttons. 
 
 
 
