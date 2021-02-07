@@ -5,11 +5,20 @@ import Table from 'react-bootstrap/Table'
 
 const StockView = ({ showList, stocks, dateRange }) => {
 
+  //Display instructions if dateRange haven't been defined yet
+  if (!dateRange.start && !dateRange.end) {
+    return (
+      <div>
+        Start by giving a date range!
+      </div>
+    )
+  }
+
   //Display instructions if stocks haven't been defined yet
   if (stocks.length === 0) {
     return (
       <div>
-        Start by giving a date range!
+        No stocks in the range between <i>{dateRange.start}</i> and <i>{dateRange.end}.</i>
       </div>
     )
   }
