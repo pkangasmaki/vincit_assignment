@@ -22,7 +22,7 @@ important urls:
 
 _/api/stocks_
 
-_/api/stocks/range?startDate=01/13/2020&endDate=01/19/2021_  **<-** **01/13/2020** and **01/19/2021** are editable params
+_/api/stocks/range?startDate=01/13/2020&endDate=01/19/2021_  **<-** **01/13/2020** and **01/19/2021** are query params
 
 
 
