@@ -14,16 +14,19 @@ const StockView = ({ showList, stocks, dateRange }) => {
     )
   }
 
+  //Sort array by elements value volume in descending order
   const sortByVolume = (array) => {
     return array.sort((a, b) => (a.Volume < b.Volume) ? 1 : (a.Volume === b.volume) ? ((a.PriceChange < b.PriceChange) ? 1 : -1) : -1 )
   }
 
+  //Sort array by elemets SMA5 percentage in descending order
   const sortBySMA5 = (array) => {
     return array.sort((a, b) => {
       return (a.Open/a.SMA5 < b.Open/b.SMA5) ? 1 : -1
     })
   }
 
+  ////Sort array by elements date in ascending order
   const sortByDate = (array) => {
     return array.sort((a, b) => {
       return (a.Date > b.Date) ? 1 : -1
