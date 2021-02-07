@@ -36,7 +36,7 @@ _npm start_
 _npm run lint_
 
 
-Start by giving preferred start date and end date in the input fields on the frontpage. There are two buttons; Volume and SMA5. Volume button displays statistics about the stocks volume and daily price changes whereas SMA5 button displays statistics about stocks opening price compared to the SMA5 price. You can switch between the two views by clicking either of the buttons. 
+Start by giving preferred start date and end date in the input fields on the frontpage. There are two buttons; Volume and SMA5. Volume button displays statistics about the stocks volume and daily price changes whereas SMA5 button displays statistics about stocks opening price compared to the SMA5 price. You can switch between the two views by clicking either of the buttons. The data of this programs contains information about AAPL stocks between dates 01/20/2021 and 01/21/2020
 
 
 
